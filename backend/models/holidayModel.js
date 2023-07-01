@@ -7,10 +7,39 @@ const holidaySchema = new Schema({
         type: String,
         required: true
     },
-    days: {
-        type: Number,
+    description: {
+        type: String,
+        required: true
+    },
+    departureDate: {
+        type: Date,
+        required: true
+    },
+    returnDate: {
+        type: Date,
+        required: true
+    },
+    travelList: {
+        type: Array,
+        required: true
+    },
+    accommodationList: {
+        type: Array,
+        required: true
+    },
+    activityList: {
+        type: Array,
+        required: true
+    },
+    poiList: {
+        type: Array,
+        required: true
+    },
+    taskList: {
+        type: Array,
         required: true
     }
+
 }, { timestamps: true })
 
 module.exports = mongoose.model('Holiday', holidaySchema)
