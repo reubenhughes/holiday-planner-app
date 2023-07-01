@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 // components
 import HolidayDetails from '../components/HolidayDetails'
+import HolidayForm from '../components/HolidayForm'
 
 const Home = () => {
     const [holidays, setHolidays] = useState(null)
@@ -20,12 +21,13 @@ const Home = () => {
     }, [])
 
     return (
-        <div className="Home">
+        <div className="home">
             <div className="holidays">
                 {holidays && holidays.map((holiday) => (
                     <HolidayDetails key={holidays._id} holiday={holiday}/>
                 ))}
             </div>
+            <HolidayForm />
         </div>
     )
 }
