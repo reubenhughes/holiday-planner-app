@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useHolidaysContext } from '../hooks/useHolidaysContext'
 
 const HolidayForm = () => {
+  const { dispatch } = useHolidaysContext()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [departureDate, setDeparture] = useState('')
@@ -37,6 +39,7 @@ const HolidayForm = () => {
       setDeparture('')
       setReturn('')
       console.log('New holiday added:', json)
+      dispatch({type: 'CREATE_HOLIDAY', payload: json})
     }
 
   }

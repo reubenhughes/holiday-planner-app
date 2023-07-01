@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useHolidaysContext } from '../hooks/useHolidaysContext'
 
 // components
 import HolidayDetails from '../components/HolidayDetails'
 import HolidayForm from '../components/HolidayForm'
 
 const Home = () => {
-    const [holidays, setHolidays] = useState(null)
+    const {holidays, dispatch} = useHolidaysContext()
 
     useEffect(() => {
         const fetchHolidays = async () => {
@@ -13,12 +14,12 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setHolidays(json)
+                dispatch({type: "SET_HOLIDAYS", payload: json})
             }
         }
 
         fetchHolidays()
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="home">
