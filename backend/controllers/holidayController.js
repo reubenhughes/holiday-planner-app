@@ -90,9 +90,29 @@ const deleteHoliday = async (req, res) => {
     res.status(200).json(holiday)
 }
 
+// update a holiday
+const updateHoliday = async (req, res) => {
+    const { id } = req.params
+  
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({error: 'No such holiday'})
+    }
+  
+    const holiday = await Holiday.findOneAndUpdate({_id: id}, {
+      ...req.body
+    })
+  
+    if (!holiday) {
+      return res.status(400).json({error: 'No such holiday'})
+    }
+  
+    res.status(200).json(holiday)
+  }
+
 module.exports = {
     getHolidays,
     getHoliday,
     createHoliday,
-    deleteHoliday
+    deleteHoliday,
+    updateHoliday
 }
