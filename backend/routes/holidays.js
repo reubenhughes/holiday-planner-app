@@ -3,6 +3,7 @@ const Holiday = require('../models/holidayModel')
 const {
     getHolidays,
     getHoliday,
+    getTravel,
     createHoliday,
     deleteHoliday,
     updateHoliday,
@@ -15,6 +16,9 @@ router.get('/', getHolidays)
 
 // GET a single holiday
 router.get('/:id', getHoliday)
+
+// GET travel
+router.get('/:id/travel/:id', getTravel)
 
 // POST a new holiday
 router.post('/', createHoliday)

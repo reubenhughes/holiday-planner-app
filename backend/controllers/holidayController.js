@@ -1,4 +1,5 @@
 const Holiday = require('../models/holidayModel')
+const Travel = require('../models/travelModel')
 const mongoose = require('mongoose')
 
 // get all holidays
@@ -23,6 +24,23 @@ const getHoliday = async (req, res) => {
     }
 
     res.status(200).json(holiday)
+}
+
+// get travel
+const getTravel = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such travel'})
+    }
+
+    const travel = await Travel.findById(id)
+
+    if (!travel) {
+        return res.status(404).json({error: 'No such travel'})
+    }
+
+    res.status(200).json(travel)
 }
 
 // create new holiday
@@ -112,6 +130,7 @@ const updateHoliday = async (req, res) => {
 module.exports = {
     getHolidays,
     getHoliday,
+    getTravel,
     createHoliday,
     deleteHoliday,
     updateHoliday
