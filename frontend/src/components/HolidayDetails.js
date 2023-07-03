@@ -20,13 +20,14 @@ const HolidayDetails = ({ holiday }) => {
 
     return (
         <div className="holiday-details">
+            <a href={holiday._id}>
             <h4>{holiday.title}</h4>
             <h5>{formatDistanceToNow(new Date(holiday.departureDate), { addSuffix: true})}</h5>
             <p><i>Description: {holiday.description}</i></p>
             <p><strong>Departure date: </strong>{format(new Date(holiday.departureDate), 'dd/MM/yyyy')}</p>
             <p><strong>Return date: </strong>{format(new Date(holiday.returnDate), 'dd/MM/yyyy')}</p>
-            <a href={holiday._id}>Link to holiday</a>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+            </a>
         </div>
     )
 }

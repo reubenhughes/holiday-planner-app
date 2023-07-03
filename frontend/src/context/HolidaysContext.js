@@ -16,6 +16,10 @@ export const holidaysReducer = (state, action) => {
       return {
         holidays: state.holidays.filter((w) => w._id !== action.payload._id)
       }
+      case 'UPDATE_HOLIDAY':
+      return {
+        holidays: state.holidays.filter((w) => w._id !== action.payload._id)
+      }
     default:
       return state
   }

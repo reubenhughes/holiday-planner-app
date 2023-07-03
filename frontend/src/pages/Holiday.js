@@ -23,11 +23,14 @@ const Holiday = () => {
 
     return (
         <div className="Home">
-            <h2>Home</h2>
+            <h2>Holiday</h2>
             <div className="holidays">
-                <h4>hello</h4>
                 {holiday && <HolidayCard holiday={holiday}/>}
             </div>
+            <div className="travelList"></div>
+            <div className="accommodationList"></div>
+            <div className="activityList"></div>
+            <div className="poiList"></div>
         </div>
     )
 }
