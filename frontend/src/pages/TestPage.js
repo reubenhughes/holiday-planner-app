@@ -5,7 +5,7 @@ import { useHolidaysContext } from '../hooks/useHolidaysContext'
 import HolidayDetails from '../components/HolidayDetails'
 import HolidayForm from '../components/HolidayForm'
 
-const Home = () => {
+const TestPage = () => {
     const {holidays, dispatch} = useHolidaysContext()
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Home = () => {
     return (
         <div className="home">
             <div className="holidays">
-                <h2>Holidays</h2>
+                <h2>Test page</h2>
                 {holidays && holidays.map((holiday) => (
                     <HolidayDetails key={holidays._id} holiday={holiday}/>
                 ))}
@@ -34,4 +34,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default TestPage

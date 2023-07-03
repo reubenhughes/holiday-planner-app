@@ -11,7 +11,7 @@ const HolidayDetails = ({ holiday }) => {
         const response = await fetch('/api/holidays/' + holiday._id, {
             method: 'DELETE'
         })
-        const json= await response.json()
+        const json = await response.json()
 
         if (response.ok) {
             dispatch({type: 'DELETE_HOLIDAY', payload: json})
@@ -25,6 +25,7 @@ const HolidayDetails = ({ holiday }) => {
             <p><i>Description: {holiday.description}</i></p>
             <p><strong>Departure date: </strong>{format(new Date(holiday.departureDate), 'dd/MM/yyyy')}</p>
             <p><strong>Return date: </strong>{format(new Date(holiday.returnDate), 'dd/MM/yyyy')}</p>
+            <a href={holiday._id}>Link to holiday</a>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
         </div>
     )
