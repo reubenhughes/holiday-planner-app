@@ -26,7 +26,7 @@ const getHoliday = async (req, res) => {
     res.status(200).json(holiday)
 }
 
-// get travel
+// get a single travel document
 const getTravel = async (req, res) => {
     const { id } = req.params
 
@@ -91,6 +91,31 @@ const createHoliday = async (req, res) => {
     }
 }
 
+// create new travel
+const createTravel = async (req, res) => {
+    const {title, type} = req.body
+
+    let emptyFields = []
+
+    if (!title) {
+        emptyFields.push('title')
+    }
+    if (!type) {
+        emptyFields.push('type')
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields})
+    }
+
+    // add doc to db
+    try {
+        const travel = await Travel.create({title, type})
+        res.status(200).json(travel)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 // delete a holiday
 const deleteHoliday = async (req, res) => {
     const { id } = req.params
@@ -132,6 +157,7 @@ module.exports = {
     getHoliday,
     getTravel,
     createHoliday,
+    createTravel,
     deleteHoliday,
     updateHoliday
 }

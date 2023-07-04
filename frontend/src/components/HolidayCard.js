@@ -10,7 +10,7 @@ const HolidayCard = ({ holiday }) => {
         <p><i>Description: {holiday.description}</i></p>
         <p><strong>Departure date: </strong>{format(new Date(holiday.departureDate), 'dd/MM/yyyy')}</p>
         <p><strong>Return date: </strong>{format(new Date(holiday.returnDate), 'dd/MM/yyyy')}</p>
-    </div>
+        </div>
     )
 }
 

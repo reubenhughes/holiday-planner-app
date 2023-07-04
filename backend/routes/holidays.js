@@ -5,6 +5,7 @@ const {
     getHoliday,
     getTravel,
     createHoliday,
+    createTravel,
     deleteHoliday,
     updateHoliday,
 } = require('../controllers/holidayController')
@@ -18,10 +19,13 @@ router.get('/', getHolidays)
 router.get('/:id', getHoliday)
 
 // GET travel
-router.get('/:id/travel/:id', getTravel)
+router.get('/travel/:id', getTravel)
 
 // POST a new holiday
 router.post('/', createHoliday)
+
+// POST a new travel
+router.post('/travel', createTravel)
 
 // DELETE a holiday
 router.delete('/:id', deleteHoliday)
