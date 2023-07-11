@@ -52,7 +52,7 @@ const TravelForm = ({ holiday }) => {
     <form className="create" onSubmit={handleSubmit}> 
       <h3>Create a New Travel</h3>
 
-      <label>Holiday Title:</label>
+      <label>Travel Title:</label>
       <input 
         type="text" 
         onChange={(e) => setTitle(e.target.value)} 
