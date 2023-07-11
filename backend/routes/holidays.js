@@ -5,8 +5,6 @@ const {
     createHoliday,
     deleteHoliday,
     updateHoliday,
-    getTravel,
-    createTravel
 } = require('../controllers/holidayController')
 
 const router = express.Router()
@@ -25,12 +23,5 @@ router.delete('/:id', deleteHoliday)
 
 // UPDATE a holiday
 router.patch('/:id', updateHoliday)
-
-
-// GET travel
-router.get('/travel/:id', getTravel)
-
-// POST a new travel
-router.post('/travel', createTravel)
 
 module.exports = router
