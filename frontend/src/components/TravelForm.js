@@ -1,19 +1,31 @@
 import { useState } from 'react'
-import { useHolidaysContext } from '../hooks/useHolidaysContext'
 
 const TravelForm = ({ holiday }) => {
-  const { dispatch } = useHolidaysContext()
   const [title, setTitle] = useState('')
   const [type, setType] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
 
+  const updateHoliday = async (travelID) => {
+    const newHoliday = holiday
+    holiday.travelList.push(travelID)
+    const response = await fetch('/api/holidays/' + holiday._id, {
+        method: 'PATCH',
+        body: JSON.stringify(newHoliday),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const json = await response.json()
+    if (response.ok) {
+        console.log("Holiday updated: " + json)
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     const travel = {title, type}
-
     const response = await fetch('/api/holidays/travel', {
       method: 'POST',
       body: JSON.stringify(travel),
@@ -22,7 +34,6 @@ const TravelForm = ({ holiday }) => {
       }
     })
     const json = await response.json()
-
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)
@@ -32,10 +43,9 @@ const TravelForm = ({ holiday }) => {
       setEmptyFields([])
       setTitle('')
       setType('')
+      updateHoliday(json._id)
       console.log('New travel added:', json)
-      dispatch({type: 'CREATE_TRAVEL', payload: json})
     }
-    
   }
 
   return (
