@@ -7,6 +7,8 @@ import TravelDetails from '../components/TravelDetails'
 import TravelForm from '../components/TravelForm'
 import AccommodationDetails from '../components/AccommodationDetails'
 import AccommodationForm from '../components/AccommodationForm'
+import ActivityDetails from '../components/ActivityDetails'
+import ActivityForm from '../components/ActivityForm'
 import PriceCard from '../components/PriceCard'
 
 const Holiday = () => {
@@ -47,7 +49,13 @@ const Holiday = () => {
                 ))}
             </div>
             {holiday && <AccommodationForm holiday={holiday} />}
-            <div className="activityList"></div>
+            <div className="activityList">
+                <h2>Activity</h2>
+                {holiday && holiday.activityList.map((activity) => (
+                    <ActivityDetails activityID={activity} />
+                ))}
+            </div>
+            {holiday && <ActivityForm holiday={holiday} />}
             <div className="poiList"></div>
         </div>
     )
