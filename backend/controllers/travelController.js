@@ -18,17 +18,26 @@ const getTravel = async (req, res) => {
     res.status(200).json(travel)
 }
 
-// create new travel
+// create new travel document
 const createTravel = async (req, res) => {
-    const {title, type} = req.body
+    const {name, type, dateTime, price, notes} = req.body
 
     let emptyFields = []
 
-    if (!title) {
-        emptyFields.push('title')
+    if (!name) {
+        emptyFields.push('name')
     }
     if (!type) {
         emptyFields.push('type')
+    }
+    if (!dateTime) {
+        emptyFields.push('dateTime')
+    }
+    if (!price) {
+        emptyFields.push('price')
+    }
+    if (!notes) {
+        emptyFields.push('notes')
     }
     if (emptyFields.length > 0) {
         return res.status(400).json({ error: 'Please fill in all the fields', emptyFields})
@@ -36,7 +45,7 @@ const createTravel = async (req, res) => {
 
     // add doc to db
     try {
-        const travel = await Travel.create({title, type})
+        const travel = await Travel.create({name, type, dateTime, price, notes})
         res.status(200).json(travel)
     } catch (error) {
         res.status(400).json({error: error.message})

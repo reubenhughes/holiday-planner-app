@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom'
 import HolidayCard from '../components/HolidayCard'
 import TravelDetails from '../components/TravelDetails'
 import TravelForm from '../components/TravelForm'
+import AccommodationDetails from '../components/AccommodationDetails'
+import AccommodationForm from '../components/AccommodationForm'
 import PriceCard from '../components/PriceCard'
 
 const Holiday = () => {
@@ -32,13 +34,19 @@ const Holiday = () => {
             </div>
             <PriceCard />
             <div className="travelList">
-                <h2>Travel information</h2>
+                <h2>Travel</h2>
                 {holiday && holiday.travelList.map((travel) => (
                     <TravelDetails travelID={travel} />
                 ))}
             </div>
             {holiday && <TravelForm holiday={holiday} />}
-            <div className="accommodationList"></div>
+            <div className="accommodationList">
+                <h2>Accommodation</h2>
+                {holiday && holiday.accommodationList.map((accommodation) => (
+                    <AccommodationDetails accommodationID={accommodation} />
+                ))}
+            </div>
+            {holiday && <AccommodationForm holiday={holiday} />}
             <div className="activityList"></div>
             <div className="poiList"></div>
         </div>

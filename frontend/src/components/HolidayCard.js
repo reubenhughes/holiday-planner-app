@@ -1,6 +1,5 @@
 // date fns
-import format from 'date-fns/format'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { format, formatDistanceToNow } from 'date-fns'
 
 const HolidayCard = ({ holiday }) => {
     return (

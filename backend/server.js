@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const holidayRoutes = require('./routes/holidays')
 const travelRoutes = require('./routes/travels')
+const accommodationRoutes = require('./routes/accommodations')
 
 // express app
 const app = express()
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/holidays', holidayRoutes)
 app.use('/api/holidays/travel', travelRoutes)
+app.use('/api/holidays/accommodation', accommodationRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)

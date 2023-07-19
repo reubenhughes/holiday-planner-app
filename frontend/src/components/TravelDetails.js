@@ -19,9 +19,13 @@ const TravelDetails = ({ travelID }) => {
 
     return (
         <div className="holiday-details">
-            <h4>{travel.title}</h4>
+            <h4>{travel.name}</h4>
             <p><strong>Type: </strong>{travel.type}</p>
-            <p><strong>ID: </strong>{travel._id}</p>
+            { /* The below date and time throws an error when formatted, even though it shouldn't
+              I am yet to find a reason for this */}
+            <p><strong>Date and time: </strong>{travel.dateTime}</p>
+            <p><strong>Price: </strong>£{travel.price}</p>
+            <p><strong>Notes: </strong><i>{travel.notes}</i></p>
         </div>
     )
 }

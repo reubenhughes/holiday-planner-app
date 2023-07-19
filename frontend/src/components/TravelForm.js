@@ -1,8 +1,11 @@
 import { useState } from 'react'
 
 const TravelForm = ({ holiday }) => {
-  const [title, setTitle] = useState('')
+  const [name, setName] = useState('')
   const [type, setType] = useState('')
+  const [dateTime, setDateTime] = useState('')
+  const [price, setPrice] = useState('')
+  const [notes, setNotes] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
@@ -25,7 +28,7 @@ const TravelForm = ({ holiday }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const travel = {title, type}
+    const travel = {name, type, dateTime, price, notes}
     const response = await fetch('/api/holidays/travel', {
       method: 'POST',
       body: JSON.stringify(travel),
@@ -41,8 +44,11 @@ const TravelForm = ({ holiday }) => {
     if (response.ok) {
       setError(null)
       setEmptyFields([])
-      setTitle('')
+      setName('')
       setType('')
+      setDateTime('')
+      setPrice('')
+      setNotes('')
       updateHoliday(json._id)
       console.log('New travel added:', json)
     }
@@ -50,14 +56,14 @@ const TravelForm = ({ holiday }) => {
 
   return (
     <form className="create" onSubmit={handleSubmit}> 
-      <h3>Create a New Travel</h3>
+      <h3>Add Travel Plans</h3>
 
-      <label>Travel Title:</label>
+      <label>Name:</label>
       <input 
         type="text" 
-        onChange={(e) => setTitle(e.target.value)} 
-        value={title}
-        className={emptyFields.includes('title') ? 'error' : ''}
+        onChange={(e) => setName(e.target.value)} 
+        value={name}
+        className={emptyFields.includes('name') ? 'error' : ''}
       />
 
       <label>Type:</label>
@@ -67,6 +73,31 @@ const TravelForm = ({ holiday }) => {
         value={type}
         className={emptyFields.includes('type') ? 'error' : ''}
       />
+
+      <label>Date and time:</label>
+      <input
+        type="datetime-local"
+        onChange={(e) => setDateTime(e.target.value)}
+        value={dateTime}
+        className={emptyFields.includes('dateTime') ? 'error' : ''}
+      />
+
+      <label>Price (£):</label>
+      <input
+        type="number"
+        step="0.01"
+        onChange={(e) => setPrice(e.target.value)}
+        value={price}
+        className={emptyFields.includes('price') ? 'error' : ''}
+      />
+
+      <label>Notes:</label>
+      <input
+        type="text"
+        onChange={(e) => setNotes(e.target.value)}
+        value={notes}
+        className={emptyFields.includes('notes') ? 'error' : ''}
+      /> 
 
       <button>Add Travel</button>
       {error && <div className="error">{error}</div>}
