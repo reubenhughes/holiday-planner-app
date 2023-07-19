@@ -9,6 +9,8 @@ import AccommodationDetails from '../components/AccommodationDetails'
 import AccommodationForm from '../components/AccommodationForm'
 import ActivityDetails from '../components/ActivityDetails'
 import ActivityForm from '../components/ActivityForm'
+import POIDetails from '../components/POIDetails'
+import POIForm from '../components/POIForm'
 import PriceCard from '../components/PriceCard'
 
 const Holiday = () => {
@@ -56,7 +58,13 @@ const Holiday = () => {
                 ))}
             </div>
             {holiday && <ActivityForm holiday={holiday} />}
-            <div className="poiList"></div>
+            <div className="poiList">
+                <h2>Places of Interest</h2>
+                {holiday && holiday.poiList.map((poi) => (
+                    <POIDetails poiID={poi} />
+                ))}
+            </div>
+            {holiday && <POIForm holiday={holiday} />}
         </div>
     )
 }
