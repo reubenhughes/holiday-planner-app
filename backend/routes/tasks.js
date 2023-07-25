@@ -1,15 +1,12 @@
-const express = require('express')
-const {
-    getTask,
-    createTask,
-} = require('../controllers/taskController')
+const express = require("express");
+const { getTask, createTask } = require("../controllers/taskController");
 
-const router = express.Router()
+const router = express.Router();
 
 // GET task
-router.get('/:id', getTask)
+router.get("/:id", getTask);
 
 // POST a new task
-router.post('/', createTask)
+router.post("/", createTask);
 
-module.exports = router
+module.exports = router;

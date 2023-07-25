@@ -1,15 +1,15 @@
-const express = require('express')
+const express = require("express");
 const {
-    getActivity,
-    createActivity,
-} = require('../controllers/activityController')
+  getActivity,
+  createActivity,
+} = require("../controllers/activityController");
 
-const router = express.Router()
+const router = express.Router();
 
 // GET activity
-router.get('/:id', getActivity)
+router.get("/:id", getActivity);
 
 // POST a new activity
-router.post('/', createActivity)
+router.post("/", createActivity);
 
-module.exports = router
+module.exports = router;
