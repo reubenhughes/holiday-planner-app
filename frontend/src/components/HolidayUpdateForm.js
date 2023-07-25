@@ -39,7 +39,7 @@ const HolidayUpdateForm = ({ holiday }) => {
 
   return (
     <form className="create" onSubmit={handleSubmit}> 
-      <h3>Update Holiday:</h3>
+      <h3>Update Holiday</h3>
 
       <label>Holiday Title:</label>
       <input 

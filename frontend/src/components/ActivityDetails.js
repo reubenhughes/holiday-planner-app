@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const ActivityDetails = ({ activityID }) => {
+const ActivityDetails = ({ holiday, activityID }) => {
     
     const [activity, setActivity] = useState('')
 
@@ -17,6 +17,21 @@ const ActivityDetails = ({ activityID }) => {
         fetchActivity()
     }, [])
 
+    const handleClick = async () => {
+        holiday.activityList.pop(activityID)
+        const response = await fetch('/api/holidays/' + holiday._id, {
+            method: 'PATCH',
+            body: JSON.stringify(holiday),
+            headers: {
+                'Content-Type': 'application/json'
+        }
+        })
+        const json = await response.json()
+        if (response.ok) {
+            console.log("Holiday updated: " + json)
+        }
+    }
+
     return (
         <div className="holiday-details">
             <h4>{activity.name}</h4>
@@ -25,6 +40,7 @@ const ActivityDetails = ({ activityID }) => {
             <p><strong>Location: </strong>{activity.location}</p>
             <p><strong>Price: </strong>£{activity.price}</p>
             <p><strong>Notes: </strong><i>{activity.notes}</i></p>
+            <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
         </div>
     )
 }

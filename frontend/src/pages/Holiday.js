@@ -42,35 +42,35 @@ const Holiday = () => {
             <div className="travelList">
                 <h2>Travel</h2>
                 {holiday && holiday.travelList.map((travel) => (
-                    <TravelDetails travelID={travel} />
+                    <TravelDetails travelID={travel} holiday={holiday}/>
                 ))}
             </div>
             {holiday && <TravelForm holiday={holiday} />}
             <div className="accommodationList">
                 <h2>Accommodation</h2>
                 {holiday && holiday.accommodationList.map((accommodation) => (
-                    <AccommodationDetails accommodationID={accommodation} />
+                    <AccommodationDetails accommodationID={accommodation} holiday={holiday} />
                 ))}
             </div>
             {holiday && <AccommodationForm holiday={holiday} />}
             <div className="activityList">
                 <h2>Activity</h2>
                 {holiday && holiday.activityList.map((activity) => (
-                    <ActivityDetails activityID={activity} />
+                    <ActivityDetails activityID={activity} holiday={holiday}/>
                 ))}
             </div>
             {holiday && <ActivityForm holiday={holiday} />}
             <div className="poiList">
                 <h2>Places of Interest</h2>
                 {holiday && holiday.poiList.map((poi) => (
-                    <POIDetails poiID={poi} />
+                    <POIDetails poiID={poi} holiday={holiday}/>
                 ))}
             </div>
             {holiday && <POIForm holiday={holiday} />}
             <div className="taskList">
                 <h2>Tasks</h2>
                 {holiday && holiday.taskList.map((task) => (
-                    <TaskDetails taskID={task} />
+                    <TaskDetails taskID={task} holiday={holiday}/>
                 ))}
             </div>
             {holiday && <TaskForm holiday={holiday} />}
