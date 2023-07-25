@@ -3,6 +3,7 @@ import { useState } from 'react'
 const TravelForm = ({ holiday }) => {
   const [name, setName] = useState('')
   const [type, setType] = useState('')
+  const [location, setLocation] = useState('')
   const [dateTime, setDateTime] = useState('')
   const [price, setPrice] = useState('')
   const [notes, setNotes] = useState('')
@@ -11,11 +12,10 @@ const TravelForm = ({ holiday }) => {
 
 
   const updateHoliday = async (travelID) => {
-    const newHoliday = holiday
     holiday.travelList.push(travelID)
     const response = await fetch('/api/holidays/' + holiday._id, {
         method: 'PATCH',
-        body: JSON.stringify(newHoliday),
+        body: JSON.stringify(holiday),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -28,7 +28,7 @@ const TravelForm = ({ holiday }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const travel = {name, type, dateTime, price, notes}
+    const travel = {name, type, location, dateTime, price, notes}
     const response = await fetch('/api/holidays/travel', {
       method: 'POST',
       body: JSON.stringify(travel),
@@ -46,6 +46,7 @@ const TravelForm = ({ holiday }) => {
       setEmptyFields([])
       setName('')
       setType('')
+      setLocation('')
       setDateTime('')
       setPrice('')
       setNotes('')
@@ -72,6 +73,14 @@ const TravelForm = ({ holiday }) => {
         onChange={(e) => setType(e.target.value)} 
         value={type}
         className={emptyFields.includes('type') ? 'error' : ''}
+      />
+
+      <label>Location:</label>
+      <input
+        type="text"
+        onChange={(e) => setLocation(e.target.value)}
+        value={location}
+        className={emptyFields.includes('location') ? 'error' : ''}
       />
 
       <label>Date and time:</label>

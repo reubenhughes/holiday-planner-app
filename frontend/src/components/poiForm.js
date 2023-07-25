@@ -10,11 +10,10 @@ const POIForm = ({ holiday }) => {
 
 
   const updateHoliday = async (poiID) => {
-    const newHoliday = holiday
     holiday.poiList.push(poiID)
     const response = await fetch('/api/holidays/' + holiday._id, {
         method: 'PATCH',
-        body: JSON.stringify(newHoliday),
+        body: JSON.stringify(holiday),
         headers: {
             'Content-Type': 'application/json'
         }

@@ -20,7 +20,7 @@ const getTravel = async (req, res) => {
 
 // create new travel document
 const createTravel = async (req, res) => {
-    const {name, type, dateTime, price, notes} = req.body
+    const {name, type, location, dateTime, price, notes} = req.body
 
     let emptyFields = []
 
@@ -29,6 +29,9 @@ const createTravel = async (req, res) => {
     }
     if (!type) {
         emptyFields.push('type')
+    }
+    if (!location) {
+        emptyFields.push('location')
     }
     if (!dateTime) {
         emptyFields.push('dateTime')
@@ -45,7 +48,7 @@ const createTravel = async (req, res) => {
 
     // add doc to db
     try {
-        const travel = await Travel.create({name, type, dateTime, price, notes})
+        const travel = await Travel.create({name, type, location, dateTime, price, notes})
         res.status(200).json(travel)
     } catch (error) {
         res.status(400).json({error: error.message})

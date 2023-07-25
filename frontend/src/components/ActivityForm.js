@@ -12,11 +12,10 @@ const ActivityForm = ({ holiday }) => {
 
 
   const updateHoliday = async (activityID) => {
-    const newHoliday = holiday
     holiday.activityList.push(activityID)
     const response = await fetch('/api/holidays/' + holiday._id, {
         method: 'PATCH',
-        body: JSON.stringify(newHoliday),
+        body: JSON.stringify(holiday),
         headers: {
             'Content-Type': 'application/json'
         }

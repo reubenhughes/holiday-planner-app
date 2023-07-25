@@ -12,11 +12,10 @@ const AccommodationForm = ({ holiday }) => {
 
 
   const updateHoliday = async (accommodationID) => {
-    const newHoliday = holiday
     holiday.accommodationList.push(accommodationID)
     const response = await fetch('/api/holidays/' + holiday._id, {
         method: 'PATCH',
-        body: JSON.stringify(newHoliday),
+        body: JSON.stringify(holiday),
         headers: {
             'Content-Type': 'application/json'
         }

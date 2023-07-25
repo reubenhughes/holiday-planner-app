@@ -11,7 +11,9 @@ import ActivityDetails from '../components/ActivityDetails'
 import ActivityForm from '../components/ActivityForm'
 import POIDetails from '../components/POIDetails'
 import POIForm from '../components/POIForm'
-import PriceCard from '../components/PriceCard'
+import TaskDetails from '../components/TaskDetails'
+import TaskForm from '../components/TaskForm'
+import HolidayUpdateForm from '../components/HolidayUpdateForm'
 
 const Holiday = () => {
     const [holiday, setHoliday] = useState(null)
@@ -36,7 +38,7 @@ const Holiday = () => {
                 <h2>Holiday</h2>
                 {holiday && <HolidayCard holiday={holiday}/>}
             </div>
-            <PriceCard />
+            <HolidayUpdateForm holiday={holiday}/>
             <div className="travelList">
                 <h2>Travel</h2>
                 {holiday && holiday.travelList.map((travel) => (
@@ -65,6 +67,13 @@ const Holiday = () => {
                 ))}
             </div>
             {holiday && <POIForm holiday={holiday} />}
+            <div className="taskList">
+                <h2>Tasks</h2>
+                {holiday && holiday.taskList.map((task) => (
+                    <TaskDetails taskID={task} />
+                ))}
+            </div>
+            {holiday && <TaskForm holiday={holiday} />}
         </div>
     )
 }

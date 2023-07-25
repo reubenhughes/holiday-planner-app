@@ -23,6 +23,7 @@ const TravelDetails = ({ travelID }) => {
             <p><strong>Type: </strong>{travel.type}</p>
             { /* The below date and time throws an error when formatted, even though it shouldn't
               I am yet to find a reason for this */}
+            <p><strong>Location: </strong>{travel.location}</p>
             <p><strong>Date and time: </strong>{travel.dateTime}</p>
             <p><strong>Price: </strong>£{travel.price}</p>
             <p><strong>Notes: </strong><i>{travel.notes}</i></p>

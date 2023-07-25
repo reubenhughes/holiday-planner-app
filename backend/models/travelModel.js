@@ -11,6 +11,10 @@ const travelSchema = new Schema({
         type: String,
         required: true
     },
+    location: {
+        type: String,
+        required: true
+    },
     dateTime: {
         type: Date,
         required: true
