@@ -24,6 +24,6 @@ To start backend: "npm run dev". To start frontend: "npm start".
 Create a .env file in the backend folder and add the following code
 ```
 PORT=4000
-MONGO_URI=mongodb+srv://[username]:[password]>@cluster0.ozjbaqv.mongodb.net/?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://[username]:[password]@cluster0.ozjbaqv.mongodb.net/?retryWrites=true&w=majority
 ```
-where [username] is your mongodb username and [password] is the password used for the holiday planner database
+where [username] is your mongodb username and [password] is the password used for the holiday planner database. Don't include the square brackets.
